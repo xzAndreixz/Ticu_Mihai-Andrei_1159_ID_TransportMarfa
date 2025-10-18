@@ -49,8 +49,10 @@ public:
 	const char* tipRemorca;
 	static int nrRemorci;
 
-	Remorca() : capacitate(new float(10.0f)),nrAxe(2),franaProprie(true), tipRemorca("Prelata") {
+	//declar unele variabile nu doar cele cu "static" folosind lista de initializare a constructorului!!!
+	Remorca() : nrAxe(2), tipRemorca("Prelata"), capacitate(new float(40.0f)), franaProprie(true) {
 		nrRemorci++;
+
 	}
 };
 int Remorca::nrRemorci = 0;
