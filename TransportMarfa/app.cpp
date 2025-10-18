@@ -32,6 +32,10 @@ public:
 
 	Sofer() : catPermis("CE") {
 		nrSoferi++;
+		nume = nullptr; //pot initializa si asa...iar cand am nevoie fac verificare si atribui memorie si pun textul acolo
+		aniExp = nullptr;
+
+
 	}
 
 };
