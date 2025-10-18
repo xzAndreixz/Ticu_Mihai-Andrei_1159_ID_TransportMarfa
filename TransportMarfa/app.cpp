@@ -12,7 +12,12 @@ public:
 
 	Camion() : nrRoti(6){ //declari aici fiindca const trebuie declarat inainte de crearea obiectului altfel ar da eroare...nu poti modifica o constanta dupa crearea obiectului!
 		vitezaMax = 90;
+		consum = new float(38.5f);
+		marca = new char[15]; //aloc 15 caractere pentru marca de tir
+		strcpy_s(marca, 15, "Nedeclarata");
+
 	}
+
 };
 
 int Camion::nrCamioane = 0;
@@ -47,6 +52,14 @@ public:
 int Remorca::nrRemorci = 0;
 
 int main() {
+
+	Camion c1;
+
+	cout << "Introduceti marca: ";
+	cin >> c1.marca;
+
+
+	cout << c1.marca;
 
 
 	return 0;
