@@ -60,15 +60,25 @@ public:
 	float* capacitate;
 	const int nrAxe;
 	bool franaProprie;
-	const char* tipRemorca;
+	char* tipRemorca;
 	static int nrRemorci;
 
 	//declar unele variabile nu doar cele cu "static" folosind lista de initializare a constructorului!!!
-	Remorca() : nrAxe(2), tipRemorca("Prelata"), capacitate(new float(40.0f)), franaProprie(true) {
+	Remorca() : nrAxe(2), capacitate(new float(40.0f)), franaProprie(true) {
 		nrRemorci++;
+		this->tipRemorca = nullptr;
 
 	}
+	
+	Remorca(float capacitate, int axe, const char* tip) :nrAxe(axe) {
+		this->capacitate = new float(capacitate);
+		this->franaProprie = true;
+		this->tipRemorca = new char[strlen(tip) + 1];
+		strcpy_s(this->tipRemorca, strlen(tip) + 1, tip);
 
+
+
+	}
 
 };
 int Remorca::nrRemorci = 0;
@@ -87,7 +97,8 @@ int main() {
 	cout << endl << endl;
 	Sofer sofoer01("Mihai Andrei", 27);
 	cout << "Soferul " << sofoer01.nume << " are " << sofoer01.varsta << " ani!"<<endl;
-
+	Remorca	remorca01(49.5, 4, "Cisterna");
+	cout << "\nDate remorca\nCapacitate: " << *remorca01.capacitate << "\nNr. axe: " << remorca01.nrAxe << "\nTip: " << remorca01.tipRemorca << "\n";
 
 	
 
