@@ -24,6 +24,12 @@ public:
 		strcpy_s(this->marca, strlen(marca) + 1, marca);
 
 	}
+	Camion(int viteza, float consum,const char* marca, int nrRoti) :nrRoti(nrRoti) {
+		this->vitezaMax = viteza;
+		this->consum = new float(consum);
+		this->marca = new char[strlen(marca) + 1];
+		strcpy_s(this->marca, strlen(marca) + 1, marca);
+	}
 
 };
 
@@ -89,18 +95,9 @@ int Remorca::nrRemorci = 0;
 
 int main() {
 
-	Camion man01(58.5, "Man Tip 1");
+	Camion tir01(90, 58.5, "Man tip 1", 8);
+	cout << "Datele camionului\nViteza maxima: " << tir01.vitezaMax << "\nConsum: " << *tir01.consum << "\nMarca & model: " << tir01.marca << "\nNr. roti: " << tir01.nrRoti;
 
-	cout << man01.marca<<endl;
-	cout << *man01.consum; 
-
-	cout << endl << endl;
-	Sofer sofoer01("Mihai Andrei", 27);
-	cout << "Soferul " << sofoer01.nume << " are " << sofoer01.varsta << " ani!"<<endl;
-	Remorca	remorca01(49.5, 4, "Cisterna");
-	cout << "\nDate remorca\nCapacitate: " << *remorca01.capacitate << "\nNr. axe: " << remorca01.nrAxe << "\nTip: " << remorca01.tipRemorca << "\n";
-
-	
 
 	return 0;
 
