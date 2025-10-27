@@ -43,6 +43,13 @@ public:
 		aniExp = nullptr;
 
 
+
+	}
+	Sofer(const char* numesofer, int varstasofer) :catPermis("CE") {
+		this->nume = new char[strlen(numesofer) + 1];
+		strcpy_s(this->nume, strlen(numesofer) + 1, numesofer);
+		this->aniExp = nullptr;
+		this->varsta = varstasofer;
 	}
 
 };
@@ -76,6 +83,12 @@ int main() {
 
 	cout << man01.marca<<endl;
 	cout << *man01.consum; 
+
+	cout << endl << endl;
+	Sofer sofoer01("Mihai Andrei", 27);
+	cout << "Soferul " << sofoer01.nume << " are " << sofoer01.varsta << " ani!"<<endl;
+
+
 	
 
 	return 0;
