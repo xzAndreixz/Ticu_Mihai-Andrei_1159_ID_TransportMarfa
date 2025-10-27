@@ -75,7 +75,7 @@ int main() {
 	Camion man01(58.5, "Man Tip 1");
 
 	cout << man01.marca<<endl;
-	cout << man01.consum;
+	cout << *man01.consum; 
 	
 
 	return 0;
