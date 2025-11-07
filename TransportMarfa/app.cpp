@@ -15,6 +15,7 @@ public:
 		this->consum = new float(38.5f);
 		this->marca = new char[15]; //aloc 15 caractere pentru marca de tir
 		strcpy_s(this->marca, 15, "Nedeclarata");
+		nrCamioane++;
 
 	}
 	Camion(float consum, const char* marca): nrRoti(6) {
@@ -22,6 +23,8 @@ public:
 		this->consum = new float(consum);
 		this->marca = new char[strlen(marca) + 1];
 		strcpy_s(this->marca, strlen(marca) + 1, marca);
+		nrCamioane++;
+
 
 	}
 	Camion(int viteza, float consum,const char* marca, int nrRoti) :nrRoti(nrRoti) {
@@ -29,6 +32,12 @@ public:
 		this->consum = new float(consum);
 		this->marca = new char[strlen(marca) + 1];
 		strcpy_s(this->marca, strlen(marca) + 1, marca);
+		nrCamioane++;
+
+	}
+
+	 static int getNrCamioane() {
+		return nrCamioane;
 	}
 
 };
@@ -109,7 +118,15 @@ int main() {
 
 	Camion tir01(90, 58.5, "Man tip 1", 8);
 	cout << "Datele camionului\nViteza maxima: " << tir01.vitezaMax << "\nConsum: " << *tir01.consum << "\nMarca & model: " << tir01.marca << "\nNr. roti: " << tir01.nrRoti;
-
+	cout << endl << endl;
+	Camion tir02(90, 45, "Mercedes tip 1", 8);
+	cout << "Datele camionului\nViteza maxima: " << tir02.vitezaMax << "\nConsum: " << *tir02.consum << "\nMarca & model: " << tir02.marca << "\nNr. roti: " << tir02.nrRoti;
+	cout << "\nNumar total camioane: " << Camion::getNrCamioane();
+	cout << endl << endl;
+	Camion tir03(90, 40, "Volvo tip 1", 8);
+	cout << "Datele camionului\nViteza maxima: " << tir03.vitezaMax << "\nConsum: " << *tir03.consum << "\nMarca & model: " << tir03.marca << "\nNr. roti: " << tir03.nrRoti;
+	cout << "\nNumar total camioane: " << Camion::getNrCamioane();
+	cout << endl;
 	Remorca rem01(40, 8,true, "Cisterna");
 
 	cout << "\n\nDatele remorci\nCapacitatea: " << *rem01.capacitate << "\nNr. axe: " << rem01.nrAxe << "\nFrana:  ";
