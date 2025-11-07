@@ -58,6 +58,8 @@ public:
 		this->varsta = varstasofer;
 	}
 
+	
+
 };
 int Sofer::nrSoferi = 0;
 
@@ -81,8 +83,16 @@ public:
 		this->franaProprie = true;
 		this->tipRemorca = new char[strlen(tip) + 1];
 		strcpy_s(this->tipRemorca, strlen(tip) + 1, tip);
+		
 
 
+	}
+	Remorca(float capacitate, int axe, bool frana, const char* tipRemorca) : nrAxe(axe) {
+		
+		this->capacitate = new float(capacitate);
+		this->franaProprie = frana;
+		this->tipRemorca = new char[strlen(tipRemorca) + 1];
+		strcpy_s(this->tipRemorca, strlen(tipRemorca) + 1, tipRemorca);
 
 	}
 
