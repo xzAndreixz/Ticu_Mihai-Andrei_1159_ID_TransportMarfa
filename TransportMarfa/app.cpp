@@ -41,7 +41,6 @@ public:
 	}
 
 };
-
 int Camion::nrCamioane = 0;
 
 class Sofer {
@@ -56,23 +55,26 @@ public:
 		nrSoferi++;
 		nume = nullptr; //pot initializa si asa...iar cand am nevoie fac verificare si atribui memorie si pun textul acolo
 		aniExp = nullptr;
-
-
-
+		nrSoferi++;
 	}
 	Sofer(const char* numesofer, int varstasofer) :catPermis("CE") {
 		this->nume = new char[strlen(numesofer) + 1];
 		strcpy_s(this->nume, strlen(numesofer) + 1, numesofer);
 		this->aniExp = nullptr;
 		this->varsta = varstasofer;
+		nrSoferi++;
 	}
 	Sofer(const char* nume, float aniExp, int varsta, const char* cat) :catPermis(cat) {
 		this->nume = new char[strlen(nume) + 1];
+		this->aniExp = new float(aniExp);
 		strcpy_s(this->nume, strlen(nume) + 1, nume);
 		this->varsta = varsta;
-		
+		nrSoferi++;
 	}
 
+	static int getNrSoferi() {
+		return nrSoferi;
+	}
 };
 int Sofer::nrSoferi = 0;
 
@@ -88,13 +90,14 @@ public:
 	Remorca() : nrAxe(2), capacitate(new float(40.0f)), franaProprie(true) {
 		nrRemorci++;
 		this->tipRemorca = nullptr;
-
+		nrRemorci++;
 	}
 	Remorca(float capacitate, int axe, const char* tip) :nrAxe(axe) {
 		this->capacitate = new float(capacitate);
 		this->franaProprie = true;
 		this->tipRemorca = new char[strlen(tip) + 1];
 		strcpy_s(this->tipRemorca, strlen(tip) + 1, tip);
+		nrRemorci++;
 
 	}
 	Remorca(float capacitate, int axe, bool frana, const char* tipRemorca) : nrAxe(axe) {
@@ -103,10 +106,12 @@ public:
 		this->franaProprie = frana;
 		this->tipRemorca = new char[strlen(tipRemorca) + 1];
 		strcpy_s(this->tipRemorca, strlen(tipRemorca) + 1, tipRemorca);
-
+		nrRemorci++;
 	}
 	
-
+	static int getNrRemorci() {
+		return nrRemorci;
+}
 };
 int Remorca::nrRemorci = 0;
 
@@ -121,18 +126,23 @@ int main() {
 	cout << endl << endl;
 	Camion tir02(90, 45, "Mercedes tip 1", 8);
 	cout << "Datele camionului\nViteza maxima: " << tir02.vitezaMax << "\nConsum: " << *tir02.consum << "\nMarca & model: " << tir02.marca << "\nNr. roti: " << tir02.nrRoti;
-	cout << "\nNumar total camioane: " << Camion::getNrCamioane();
 	cout << endl << endl;
 	Camion tir03(90, 40, "Volvo tip 1", 8);
 	cout << "Datele camionului\nViteza maxima: " << tir03.vitezaMax << "\nConsum: " << *tir03.consum << "\nMarca & model: " << tir03.marca << "\nNr. roti: " << tir03.nrRoti;
 	cout << "\nNumar total camioane: " << Camion::getNrCamioane();
 	cout << endl;
+
+	Sofer sof01("Marian", 10, 30, "CE");
+	cout << "\n\nDatele soferului\nNume: " << sof01.nume << "\nAni experienta: " << *sof01.aniExp << "\nVarsta: " << sof01.varsta << "\nCategorii permis: " << sof01.catPermis;
+	cout << endl << "Numar total soferi: " << Sofer::getNrSoferi();
 	Remorca rem01(40, 8,true, "Cisterna");
 
 	cout << "\n\nDatele remorci\nCapacitatea: " << *rem01.capacitate << "\nNr. axe: " << rem01.nrAxe << "\nFrana:  ";
 	if (rem01.franaProprie) cout << "Are frana prorpie";
 	cout << "\nTip remorca: " << rem01.tipRemorca;
 
+	cout << endl;
+	cout <<"Numar total remorci: " << Remorca::getNrRemorci();
 
 	return 0;
 
