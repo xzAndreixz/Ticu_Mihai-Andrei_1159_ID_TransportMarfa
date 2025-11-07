@@ -57,7 +57,6 @@ public:
 		this->aniExp = nullptr;
 		this->varsta = varstasofer;
 	}
-
 	Sofer(const char* nume, float aniExp, int varsta, const char* cat) :catPermis(cat) {
 		this->nume = new char[strlen(nume) + 1];
 		strcpy_s(this->nume, strlen(nume) + 1, nume);
@@ -82,24 +81,22 @@ public:
 		this->tipRemorca = nullptr;
 
 	}
-	
 	Remorca(float capacitate, int axe, const char* tip) :nrAxe(axe) {
 		this->capacitate = new float(capacitate);
 		this->franaProprie = true;
 		this->tipRemorca = new char[strlen(tip) + 1];
 		strcpy_s(this->tipRemorca, strlen(tip) + 1, tip);
-		
-
 
 	}
 	Remorca(float capacitate, int axe, bool frana, const char* tipRemorca) : nrAxe(axe) {
-		
+
 		this->capacitate = new float(capacitate);
 		this->franaProprie = frana;
 		this->tipRemorca = new char[strlen(tipRemorca) + 1];
 		strcpy_s(this->tipRemorca, strlen(tipRemorca) + 1, tipRemorca);
 
 	}
+	
 
 };
 int Remorca::nrRemorci = 0;
@@ -112,6 +109,12 @@ int main() {
 
 	Camion tir01(90, 58.5, "Man tip 1", 8);
 	cout << "Datele camionului\nViteza maxima: " << tir01.vitezaMax << "\nConsum: " << *tir01.consum << "\nMarca & model: " << tir01.marca << "\nNr. roti: " << tir01.nrRoti;
+
+	Remorca rem01(40, 8,true, "Cisterna");
+
+	cout << "\n\nDatele remorci\nCapacitatea: " << *rem01.capacitate << "\nNr. axe: " << rem01.nrAxe << "\nFrana:  ";
+	if (rem01.franaProprie) cout << "Are frana prorpie";
+	cout << "\nTip remorca: " << rem01.tipRemorca;
 
 
 	return 0;
