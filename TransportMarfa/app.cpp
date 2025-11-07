@@ -144,6 +144,8 @@ int main() {
 	cout << endl;
 	cout <<"Numar total remorci: " << Remorca::getNrRemorci();
 
+	cout<<"Faza 2!"
+
 	return 0;
 
 }
