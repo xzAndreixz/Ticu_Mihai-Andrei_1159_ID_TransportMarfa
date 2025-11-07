@@ -58,7 +58,12 @@ public:
 		this->varsta = varstasofer;
 	}
 
-	
+	Sofer(const char* nume, float aniExp, int varsta, const char* cat) :catPermis(cat) {
+		this->nume = new char[strlen(nume) + 1];
+		strcpy_s(this->nume, strlen(nume) + 1, nume);
+		this->varsta = varsta;
+		
+	}
 
 };
 int Sofer::nrSoferi = 0;
