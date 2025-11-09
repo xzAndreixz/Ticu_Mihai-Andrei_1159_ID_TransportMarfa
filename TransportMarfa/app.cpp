@@ -154,6 +154,7 @@ Remorca::~Remorca() {
 
 int main() {
 
+	cout << "Am ramas la creerea constructorului de copiere pentru fiecare clasa!";
 	
 
 	return 0;
