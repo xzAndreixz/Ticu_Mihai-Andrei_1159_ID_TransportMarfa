@@ -90,10 +90,19 @@ public:
 		return nrSoferi;
 	}
 
-
+	~Sofer();
 };
 int Sofer::nrSoferi = 0;
-
+Sofer::~Sofer() {
+	if (nume != nullptr) {
+		delete nume;
+		nume = nullptr;
+	}
+	if (aniExp != nullptr) {
+		delete aniExp;
+		aniExp = nullptr;
+	}
+}
 class Remorca {
 private:
 	float* capacitate;
