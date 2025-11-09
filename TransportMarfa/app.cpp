@@ -103,6 +103,7 @@ Sofer::~Sofer() {
 		aniExp = nullptr;
 	}
 }
+
 class Remorca {
 private:
 	float* capacitate;
@@ -138,9 +139,15 @@ public:
 	static int getNrRemorci() {
 		return nrRemorci;
 }
+	~Remorca();
 };
 int Remorca::nrRemorci = 0;
-
+Remorca::~Remorca() {
+	if (capacitate != nullptr) {
+		delete capacitate;
+		capacitate = nullptr;
+	}
+}
 
 
 
