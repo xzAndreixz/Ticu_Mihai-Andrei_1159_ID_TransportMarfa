@@ -3,13 +3,14 @@
 using namespace std;
 
 class Camion {
-public:
+private:
 	int vitezaMax;
 	float* consum;
 	char* marca;
 	const int nrRoti;
 	static int nrCamioane;
 
+public:
 	Camion() : nrRoti(6){ //declari aici fiindca const trebuie declarat inainte de crearea obiectului altfel ar da eroare...nu poti modifica o constanta dupa crearea obiectului!
 		this->vitezaMax = 90;
 		this->consum = new float(38.5f);
@@ -44,13 +45,14 @@ public:
 int Camion::nrCamioane = 0;
 
 class Sofer {
-public:
+private:
 	char* nume;
 	float* aniExp;
 	int varsta;
 	const char* catPermis;
 	static int nrSoferi;
 
+public:
 	Sofer() : catPermis("CE") {
 		nrSoferi++;
 		nume = nullptr; //pot initializa si asa...iar cand am nevoie fac verificare si atribui memorie si pun textul acolo
@@ -79,13 +81,14 @@ public:
 int Sofer::nrSoferi = 0;
 
 class Remorca {
-public:
+private:
 	float* capacitate;
 	const int nrAxe;
 	bool franaProprie;
 	char* tipRemorca;
 	static int nrRemorci;
-
+	
+public:
 	//declar unele variabile nu doar cele cu "static" folosind lista de initializare a constructorului!!!
 	Remorca() : nrAxe(2), capacitate(new float(40.0f)), franaProprie(true) {
 		nrRemorci++;
@@ -121,30 +124,7 @@ int Remorca::nrRemorci = 0;
 
 int main() {
 
-	Camion tir01(90, 58.5, "Man tip 1", 8);
-	cout << "Datele camionului\nViteza maxima: " << tir01.vitezaMax << "\nConsum: " << *tir01.consum << "\nMarca & model: " << tir01.marca << "\nNr. roti: " << tir01.nrRoti;
-	cout << endl << endl;
-	Camion tir02(90, 45, "Mercedes tip 1", 8);
-	cout << "Datele camionului\nViteza maxima: " << tir02.vitezaMax << "\nConsum: " << *tir02.consum << "\nMarca & model: " << tir02.marca << "\nNr. roti: " << tir02.nrRoti;
-	cout << endl << endl;
-	Camion tir03(90, 40, "Volvo tip 1", 8);
-	cout << "Datele camionului\nViteza maxima: " << tir03.vitezaMax << "\nConsum: " << *tir03.consum << "\nMarca & model: " << tir03.marca << "\nNr. roti: " << tir03.nrRoti;
-	cout << "\nNumar total camioane: " << Camion::getNrCamioane();
-	cout << endl;
-
-	Sofer sof01("Marian", 10, 30, "CE");
-	cout << "\n\nDatele soferului\nNume: " << sof01.nume << "\nAni experienta: " << *sof01.aniExp << "\nVarsta: " << sof01.varsta << "\nCategorii permis: " << sof01.catPermis;
-	cout << endl << "Numar total soferi: " << Sofer::getNrSoferi();
-	Remorca rem01(40, 8,true, "Cisterna");
-
-	cout << "\n\nDatele remorci\nCapacitatea: " << *rem01.capacitate << "\nNr. axe: " << rem01.nrAxe << "\nFrana:  ";
-	if (rem01.franaProprie) cout << "Are frana prorpie";
-	cout << "\nTip remorca: " << rem01.tipRemorca;
-
-	cout << endl;
-	cout <<"Numar total remorci: " << Remorca::getNrRemorci();
-
-	cout << "Faza 2!";
+	
 
 	return 0;
 
