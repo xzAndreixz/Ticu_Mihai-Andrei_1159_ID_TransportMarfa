@@ -41,9 +41,21 @@ public:
 		return nrCamioane;
 	}
 
+	 ~Camion();
+
 };
 int Camion::nrCamioane = 0;
+Camion::~Camion() {
+	if (consum != nullptr) {
+		delete consum;
+		consum = nullptr;
+	}
 
+	if (marca != nullptr) {
+		delete[] marca;
+		marca = nullptr;
+	}
+}
 class Sofer {
 private:
 	char* nume;
@@ -77,6 +89,8 @@ public:
 	static int getNrSoferi() {
 		return nrSoferi;
 	}
+
+
 };
 int Sofer::nrSoferi = 0;
 
