@@ -4,13 +4,14 @@ using namespace std;
 
 class Camion {
 private:
-	int vitezaMax;
+	
 	float* consum;
 	char* marca;
 	const int nrRoti;
 	static int nrCamioane;
 
 public:
+	int vitezaMax;
 	Camion() : nrRoti(6){ //declari aici fiindca const trebuie declarat inainte de crearea obiectului altfel ar da eroare...nu poti modifica o constanta dupa crearea obiectului!
 		this->vitezaMax = 90;
 		this->consum = new float(38.5f);
@@ -168,7 +169,16 @@ Remorca::~Remorca() {
 
 int main() {
 
-	cout << "Am ramas la creerea constructorului de copiere pentru fiecare clasa!";
+	cout << "Creeam o clasa Camion!" << endl;
+	Camion c1(90, 45.0, "Volvo", 8);
+	Camion c2 = c1;  //testez constructorul de copiere creat
+	Camion c3(c1); //testez constructorul de copiere creat, ambele metode de apelare al acestui constructor sunt echivalente!
+
+
+	cout << endl << "Detalii camion c1: " << endl << "Viteza: " << c1.vitezaMax;
+
+	cout << endl << "Detalii camion c2: " << endl << "Viteza: " << c2.vitezaMax;
+	cout << endl << "Detalii camion c3: " << endl << "Viteza: " << c3.vitezaMax;  //am mutat aceasta variabila inapoi in public pentru a o face accesibila fara get
 	
 
 	return 0;
