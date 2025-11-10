@@ -125,7 +125,7 @@ public:
 int Sofer::nrSoferi = 0;
 Sofer::~Sofer() {
 	if (nume != nullptr) {
-		delete nume;
+		delete[] nume;
 		nume = nullptr;
 	}
 	if (aniExp != nullptr) {
@@ -171,7 +171,7 @@ public:
 }
 	~Remorca();
 
-	Remorca(const Remorca& copie) : nrAxe(copie.nrAxe) {
+	Remorca(const Remorca& copie) : nrAxe(copie.nrAxe), capacitate(nullptr), tipRemorca(nullptr) {  //poti pune si ca aceste atribute sa pointeze catre nimic in caz ca da vreo eroare si nu intra pe else pentru a nu fi neintializate
 		if (copie.capacitate != nullptr)
 			capacitate = new float(*copie.capacitate);
 		else
@@ -199,10 +199,7 @@ Remorca::~Remorca() {
 
 int main() {
 
-	cout << "Creeam o clasa Camion!" << endl;
-	Camion c1(90, 45.0, "Volvo", 8);
-	Camion c2 = c1;  //testez constructorul de copiere creat
-	Camion c3(c1); //testez constructorul de copiere creat, ambele metode de apelare al acestui constructor sunt echivalente!
+	
 
 
 	
