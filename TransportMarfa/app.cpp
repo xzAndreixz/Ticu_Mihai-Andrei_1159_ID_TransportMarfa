@@ -42,6 +42,19 @@ public:
 	}
 
 	 ~Camion();
+	 Camion(const Camion& copie) : nrRoti(copie.nrRoti){ //nu e obligatoriu sa folosesti this in constructor de copiere dar am vrut eu :)
+		 this->vitezaMax = copie.vitezaMax;
+		 if (copie.consum != nullptr )  
+			 this->consum = new float(*copie.consum);  else this->consum = nullptr;
+		 if (copie.marca != nullptr) {
+			 this->marca = new char[strlen(copie.marca) + 1];
+			 strcpy_s(this->marca, strlen(copie.marca) + 1, copie.marca);
+		 }
+		 else this->marca = nullptr; //aici nu pui * fiindca daca ai pune ai retine doar primul caracter..de ce? fiindca se pune un pointer catre incepului sirului de caractere
+		 nrCamioane++;	
+	 }
+
+	 
 
 };
 int Camion::nrCamioane = 0;
@@ -56,6 +69,7 @@ Camion::~Camion() {
 		marca = nullptr;
 	}
 }
+
 class Sofer {
 private:
 	char* nume;
