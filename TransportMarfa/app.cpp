@@ -4,14 +4,14 @@ using namespace std;
 
 class Camion {
 private:
-	
+	int vitezaMax;
 	float* consum;
 	char* marca;
 	const int nrRoti;
 	static int nrCamioane;
 
 public:
-	int vitezaMax;
+	
 	Camion() : nrRoti(6){ //declari aici fiindca const trebuie declarat inainte de crearea obiectului altfel ar da eroare...nu poti modifica o constanta dupa crearea obiectului!
 		this->vitezaMax = 90;
 		this->consum = new float(38.5f);
@@ -106,6 +106,21 @@ public:
 	}
 
 	~Sofer();
+
+	Sofer(const Sofer& copie) :catPermis(copie.catPermis) {
+		if (copie.nume != nullptr) {
+			nume = new char[strlen(copie.nume) + 1];
+			strcpy_s(nume, strlen(copie.nume) + 1, copie.nume);
+		}
+		else
+			nume = nullptr;
+		if (copie.aniExp != nullptr)
+			aniExp = new float(*copie.aniExp);
+		else
+			aniExp = nullptr;
+		varsta = copie.varsta;
+		nrSoferi++;
+	}
 };
 int Sofer::nrSoferi = 0;
 Sofer::~Sofer() {
@@ -175,10 +190,6 @@ int main() {
 	Camion c3(c1); //testez constructorul de copiere creat, ambele metode de apelare al acestui constructor sunt echivalente!
 
 
-	cout << endl << "Detalii camion c1: " << endl << "Viteza: " << c1.vitezaMax;
-
-	cout << endl << "Detalii camion c2: " << endl << "Viteza: " << c2.vitezaMax;
-	cout << endl << "Detalii camion c3: " << endl << "Viteza: " << c3.vitezaMax;  //am mutat aceasta variabila inapoi in public pentru a o face accesibila fara get
 	
 
 	return 0;
