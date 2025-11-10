@@ -170,6 +170,21 @@ public:
 		return nrRemorci;
 }
 	~Remorca();
+
+	Remorca(const Remorca& copie) : nrAxe(copie.nrAxe) {
+		if (copie.capacitate != nullptr)
+			capacitate = new float(*copie.capacitate);
+		else
+			capacitate = nullptr;
+		franaProprie = copie.franaProprie;
+		if (copie.tipRemorca != nullptr) {
+			tipRemorca = new char[strlen(copie.tipRemorca) + 1];
+			strcpy_s(tipRemorca, strlen(copie.tipRemorca) + 1, copie.tipRemorca);
+		}
+		else
+			tipRemorca = nullptr;
+		nrRemorci++;
+	}
 };
 int Remorca::nrRemorci = 0;
 Remorca::~Remorca() {
