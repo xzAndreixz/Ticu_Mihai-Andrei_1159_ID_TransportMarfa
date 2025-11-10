@@ -4,14 +4,15 @@ using namespace std;
 
 class Camion {
 private:
+	
+
+public:
 	int vitezaMax;
 	float* consum;
 	char* marca;
 	const int nrRoti;
 	static int nrCamioane;
 
-public:
-	
 	Camion() : nrRoti(6){ //declari aici fiindca const trebuie declarat inainte de crearea obiectului altfel ar da eroare...nu poti modifica o constanta dupa crearea obiectului!
 		this->vitezaMax = 90;
 		this->consum = new float(38.5f);
@@ -73,13 +74,14 @@ Camion::~Camion() {
 
 class Sofer {
 private:
+	
+
+public:
 	char* nume;
 	float* aniExp;
 	int varsta;
 	const char* catPermis;
 	static int nrSoferi;
-
-public:
 	Sofer() : catPermis("CE") {
 		nrSoferi++;
 		nume = nullptr; //pot initializa si asa...iar cand am nevoie fac verificare si atribui memorie si pun textul acolo
@@ -136,13 +138,14 @@ Sofer::~Sofer() {
 
 class Remorca {
 private:
+	
+	
+public:
 	float* capacitate;
 	const int nrAxe;
 	bool franaProprie;
 	char* tipRemorca;
 	static int nrRemorci;
-	
-public:
 	//declar unele variabile nu doar cele cu "static" folosind lista de initializare a constructorului!!!
 	Remorca() : nrAxe(2), capacitate(new float(40.0f)), franaProprie(true) {
 		nrRemorci++;
