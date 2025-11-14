@@ -73,6 +73,9 @@ public:
 			 return "Nedeclarat!";
 		 
 	 }
+	 int getNrRoti() const{
+		 return this->nrRoti;
+	 }
 	 
 
 };
@@ -223,6 +226,15 @@ int main() {
 	cout << c1.getmarca();
 	cout << endl;
 	cout << c1.getVitezaMax();
+	cout << endl;
+	cout << c1.getNrRoti();
+	cout << endl;
+	cout << Camion::getNrCamioane();
+
+	cout << endl;
+	Camion c2 = c1;
+	Camion c3(c1);
+	cout << Camion::getNrCamioane();
 
 
 
