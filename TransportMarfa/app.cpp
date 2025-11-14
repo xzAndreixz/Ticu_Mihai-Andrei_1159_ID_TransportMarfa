@@ -53,6 +53,7 @@ public:
 	 ~Camion();
 	 //facem get-eri
 	 static int getNrCamioane() {
+		 cout << "\nNumar total camioane create pana acum: ";
 		 return nrCamioane;
 	 }
 	 int getVitezaMax() {
