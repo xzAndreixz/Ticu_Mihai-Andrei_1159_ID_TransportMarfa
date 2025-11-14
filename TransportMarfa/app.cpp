@@ -217,6 +217,12 @@ Remorca::~Remorca() {
 
 int main() {
 	
+	Camion c1(90, 45.5f, "Volvo", 8);
+	cout<<c1.getConsum();
+	cout << endl;
+	cout << c1.getmarca();
+	cout << endl;
+	cout << c1.getVitezaMax();
 
 
 
