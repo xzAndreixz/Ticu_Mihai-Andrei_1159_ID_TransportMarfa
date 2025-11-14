@@ -38,24 +38,32 @@ public:
 		nrCamioane++;
 
 	}
-
-	 static int getNrCamioane() {
-		return nrCamioane;
+	Camion(const Camion& copie) : nrRoti(copie.nrRoti) { //nu e obligatoriu sa folosesti this in constructor de copiere dar am vrut eu :)
+		this->vitezaMax = copie.vitezaMax;
+		if (copie.consum != nullptr)
+			this->consum = new float(*copie.consum);  else this->consum = nullptr;
+		if (copie.marca != nullptr) {
+			this->marca = new char[strlen(copie.marca) + 1];
+			strcpy_s(this->marca, strlen(copie.marca) + 1, copie.marca);
+		}
+		else this->marca = nullptr; //aici nu pui * fiindca daca ai pune ai retine doar primul caracter..de ce? fiindca se pune un pointer catre incepului sirului de caractere
+		nrCamioane++;
 	}
 
 	 ~Camion();
-	 Camion(const Camion& copie) : nrRoti(copie.nrRoti){ //nu e obligatoriu sa folosesti this in constructor de copiere dar am vrut eu :)
-		 this->vitezaMax = copie.vitezaMax;
-		 if (copie.consum != nullptr )  
-			 this->consum = new float(*copie.consum);  else this->consum = nullptr;
-		 if (copie.marca != nullptr) {
-			 this->marca = new char[strlen(copie.marca) + 1];
-			 strcpy_s(this->marca, strlen(copie.marca) + 1, copie.marca);
-		 }
-		 else this->marca = nullptr; //aici nu pui * fiindca daca ai pune ai retine doar primul caracter..de ce? fiindca se pune un pointer catre incepului sirului de caractere
-		 nrCamioane++;	
+	 //facem get-eri
+	 static int getNrCamioane() {
+		 return nrCamioane;
 	 }
-
+	 int getVitezaMax() {
+		 return this->vitezaMax;
+	}
+	 float getConsum() {
+		 if (this->consum != nullptr)
+			 return *this->consum;
+		 else
+			 return 0.0f;
+	 }
 	 
 
 };
@@ -83,7 +91,6 @@ private:
 public:
 	
 	Sofer() : catPermis("CE") {
-		nrSoferi++;
 		nume = nullptr; //pot initializa si asa...iar cand am nevoie fac verificare si atribui memorie si pun textul acolo
 		aniExp = nullptr;
 		nrSoferi++;
@@ -148,7 +155,6 @@ public:
 	
 	//declar unele variabile nu doar cele cu "static" folosind lista de initializare a constructorului!!!
 	Remorca() : nrAxe(2), capacitate(new float(40.0f)), franaProprie(true) {
-		nrRemorci++;
 		this->tipRemorca = nullptr;
 		nrRemorci++;
 	}
@@ -201,74 +207,10 @@ Remorca::~Remorca() {
 
 
 int main() {
-		/*
-	Camion c1(100, 35.5f, "Volvo", 8);
-	Camion c2 = c1;
-	Camion c3(c1);
-	Sofer s1("Andrei", 5.5f, 28, "CE");
-	Sofer s2 = s1;
-	Sofer s3(s1);
-	Remorca r1(42.3f, 3, true, "Cisterna");
-	Remorca r2 = r1;
-	Remorca r3(r1);
-
-	cout << "=== TEST CONSTRUCTORI ===" << endl;
 	
-	cout << endl;
-	cout << "Camion c1:" << endl;
-	cout << "  Viteza: " << c1.vitezaMax << endl;
-	cout << "  Consum: " << *c1.consum << endl;
-	cout << "  Marca: " << c1.marca << endl;
-	cout << "  Nr. roti: " << c1.nrRoti << endl;
 
-	cout << endl;
-	cout << "Camion c2:" << endl;
-	cout << "  Viteza: " << c2.vitezaMax << endl;
-	cout << "  Consum: " << *c2.consum << endl;
-	cout << "  Marca: " << c2.marca << endl;
-	cout << "  Nr. roti: " << c2.nrRoti << endl;
 
-	cout << endl;
-	cout << "Camion c3:" << endl;
-	cout << "  Viteza: " << c3.vitezaMax << endl;
-	cout << "  Consum: " << *c3.consum << endl;
-	cout << "  Marca: " << c3.marca << endl;
-	cout << "  Nr. roti: " << c3.nrRoti << endl;
 
-	cout << endl;
-	cout << "\nSofer s1:" << endl;
-	cout << "  Nume: " << s1.nume << endl;
-	cout << "  Varsta: " << s1.varsta << endl;
-	cout << "  Permis: " << s1.catPermis << endl;
-
-	cout << endl;
-	cout << "\nSofer s2:" << endl;
-	cout << "  Nume: " << s2.nume << endl;
-	cout << "  Varsta: " << s2.varsta << endl;
-	cout << "  Permis: " << s2.catPermis << endl;
-
-	cout << "\nSofer s3:" << endl;
-	cout << "  Nume: " << s3.nume << endl;
-	cout << "  Varsta: " << s3.varsta << endl;
-	cout << "  Permis: " << s3.catPermis << endl;
-
-	cout << endl;
-	cout << "\nRemorca r1:" << endl;
-	cout << "  Tip: " << r1.tipRemorca << endl;
-	cout << "  Capacitate: " << *r1.capacitate << " tone" << endl;
-	cout << "  Nr. axe: " << r1.nrAxe << endl;
-	cout << endl;
-	cout << "\nRemorca r2:" << endl;
-	cout << "  Tip: " << r2.tipRemorca << endl;
-	cout << "  Capacitate: " << *r2.capacitate << " tone" << endl;
-	cout << "  Nr. axe: " << r2.nrAxe << endl;
-	cout << endl;
-	cout << "\nRemorca r3:" << endl;
-	cout << "  Tip: " << r3.tipRemorca << endl;
-	cout << "  Capacitate: " << *r3.capacitate << " tone" << endl;
-	cout << "  Nr. axe: " << r3.nrAxe << endl;
-
-	*/
 
 	return 0;
 
