@@ -64,6 +64,15 @@ public:
 		 else
 			 return 0.0f;
 	 }
+
+	 const char* getmarca() {   //Am pus const pentru a putea returna constanta "Nedeclarata!"
+		 
+		 if (this->marca != nullptr)
+			 return this->marca;
+		 else 
+			 return "Nedeclarat!";
+		 
+	 }
 	 
 
 };
