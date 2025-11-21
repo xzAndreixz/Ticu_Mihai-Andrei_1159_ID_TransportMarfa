@@ -58,6 +58,8 @@ public:
 	}
 
 	void afisareObiect() {
+		cout << "ID: " << this->id;
+		cout << endl;
 		if (this->pret)
 			cout << "Pret: " << this->pret;
 		else
@@ -84,6 +86,78 @@ public:
 
 	}
 
+	void afisareObiect2(const Laptop& f) {
+		cout << "ID: " << f.id << endl;
+
+		if (f.pret)
+			cout << "Pret: " << f.pret << endl;
+		else
+			cout << "Pret: Nu este declarat" << endl;
+
+		if (f.model)
+			cout << "Model: " << f.model << endl;
+		else
+			cout << "Model: Nu este declarat" << endl;
+
+		if (f.stocare)
+			if (f.stocare < 1000)
+				cout << "Stocare: " << f.stocare << " GB" << endl;
+			else
+				cout << "Stocare: " << f.stocare / 1000 << " TB" << endl;
+		else
+			cout << "Stocare: Nu este declarat" << endl;
+
+		cout << "Tip: " << f.tip << endl;
+		cout << endl;
+	}
+
+		//------------- OPERATORII -------------------------
+	Laptop& operator=(const Laptop& egal) {
+		if (this != &egal) {
+			if (this->model != nullptr) {
+				delete[] this->model;
+				this->model = nullptr;
+			}
+			this->pret = egal.pret;
+			this->model = new char[strlen(egal.model) + 1];
+			strcpy_s(this->model, strlen(egal.model) + 1, egal.model);
+			this->stocare = egal.stocare;
+			this->tip = egal.tip;
+		}
+		return *this;
+	}
+	bool operator<(const Laptop& maiMic) {
+		return this->stocare < maiMic.stocare;
+	}
+	bool operator>(const Laptop& maiMare)const {
+		return this->stocare > maiMare.stocare;
+	}
+	Laptop& operator+=(int x) {
+		this->pret += x;
+		return *this;
+	}
+	void operator-=(float x) {
+		this->pret -= x;
+	}
+
+
+
+	//--------------------- OPERATORII -------------------
+
+	Laptop(const Laptop& copie) : id(++nrLaptopuri) {
+		this->pret = copie.pret;
+		if (this->model != nullptr) {
+			delete[] this->model;
+			this->model = nullptr;
+		}
+		this->model = new char[strlen(copie.model) + 1];
+		strcpy(this->model, copie.model);
+		this->stocare = copie.stocare;
+		this->tip = copie.tip;
+
+	}
+
+
 private:
 	const int id;
 	float pret;
@@ -107,6 +181,15 @@ int main() {
 	l2.setTip("Gaming");
 	l2.afisareObiect();
 
+	if (l2 < l1)
+		l1.afisareObiect();
+	else
+		l2.afisareObiect();
+	
+	l2 += 1000;
+	l2.afisareObiect();
+	l2 -= 499.99;
+	l2.afisareObiect();
 
 	return 0;
 }
