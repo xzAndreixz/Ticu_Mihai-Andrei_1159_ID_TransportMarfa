@@ -86,30 +86,7 @@ public:
 
 	}
 
-	void afisareObiect2(const Laptop& f) {
-		cout << "ID: " << f.id << endl;
-
-		if (f.pret)
-			cout << "Pret: " << f.pret << endl;
-		else
-			cout << "Pret: Nu este declarat" << endl;
-
-		if (f.model)
-			cout << "Model: " << f.model << endl;
-		else
-			cout << "Model: Nu este declarat" << endl;
-
-		if (f.stocare)
-			if (f.stocare < 1000)
-				cout << "Stocare: " << f.stocare << " GB" << endl;
-			else
-				cout << "Stocare: " << f.stocare / 1000 << " TB" << endl;
-		else
-			cout << "Stocare: Nu este declarat" << endl;
-
-		cout << "Tip: " << f.tip << endl;
-		cout << endl;
-	}
+	
 
 		//------------- OPERATORII -------------------------
 	Laptop& operator=(const Laptop& egal) {
@@ -126,6 +103,7 @@ public:
 		}
 		return *this;
 	}
+	
 	bool operator<(const Laptop& maiMic) {
 		return this->stocare < maiMic.stocare;
 	}
@@ -140,7 +118,37 @@ public:
 		this->pret -= x;
 	}
 
+	Laptop& operator++() {
+		 ++this->pret;
+		 return *this;
+	}
+	//sau 
+	int operator--() {
+		return ++this->pret;
+	}
 
+	bool operator<=(const Laptop& comp) {
+		return this->stocare <= comp.stocare;
+	}
+	bool operator!=(const Laptop& comp) {
+		return this->stocare != comp.stocare;
+	}
+	bool operator==(const Laptop& comp) {
+		return this->stocare == comp.stocare;
+	}
+
+	char& operator[](int index) {
+
+		return this->model[index];
+	}
+	void operator()(float x) {
+		this->pret += x;
+	}
+
+	friend ostream& operator<<(ostream& out, const Laptop& l) {
+		out << "ID: " << l.id << endl;
+		out << "Pret: " << l.id << endl;
+	}
 
 	//--------------------- OPERATORII -------------------
 
@@ -189,6 +197,11 @@ int main() {
 	l2 += 1000;
 	l2.afisareObiect();
 	l2 -= 499.99;
+	l2.afisareObiect();
+
+	++l2;
+	l2.afisareObiect();
+	l2(200);
 	l2.afisareObiect();
 
 	return 0;
