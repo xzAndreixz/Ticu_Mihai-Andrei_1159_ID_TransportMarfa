@@ -214,6 +214,10 @@ Remorca::~Remorca() {
 		delete capacitate;
 		capacitate = nullptr;
 	}
+	if (tipRemorca != nullptr) {
+		delete[] tipRemorca;
+		tipRemorca = nullptr;
+	}
 }
 
 
@@ -221,22 +225,7 @@ Remorca::~Remorca() {
 
 int main() {
 	
-	Camion c1(90, 45.5f, "Volvo", 8);
-	cout<<c1.getConsum();
-	cout << endl;
-	cout << c1.getmarca();
-	cout << endl;
-	cout << c1.getVitezaMax();
-	cout << endl;
-	cout << c1.getNrRoti();
-	cout << endl;
-	cout << Camion::getNrCamioane();
-
-	cout << endl;
-	Camion c2 = c1;
-	Camion c3(c1);
-	cout << Camion::getNrCamioane();
-
+	
 
 
 
