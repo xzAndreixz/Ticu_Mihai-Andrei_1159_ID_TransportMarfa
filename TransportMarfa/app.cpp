@@ -262,11 +262,34 @@ public:
 		strcpy_s(this->tipRemorca, strlen(tipRemorca) + 1, tipRemorca);
 		nrRemorci++;
 	}
-	
+	//get-eri
+	float* getCapacitate() {
+		if (this->capacitate != nullptr) {
+			return this->capacitate;
+		}
+		else
+			return 0;
+	}
+	const int getNrAxe() {
+		return this->nrAxe;
+	}
+
+	bool getFranaPropie() {
+		return this->franaProprie;
+	}
+
+	const char* getTipRemorca() {
+		if (this->tipRemorca != nullptr) {
+			return this->tipRemorca;
+		}
+		else
+			return "Nedeclarat!";
+	}
+
 	static int getNrRemorci() {
 		return nrRemorci;
 }
-	~Remorca();
+	
 
 	Remorca(const Remorca& copie) : nrAxe(copie.nrAxe), capacitate(nullptr), tipRemorca(nullptr) {  //poti pune si ca aceste atribute sa pointeze catre nimic in caz ca da vreo eroare si nu intra pe else pentru a nu fi neintializate
 		if (copie.capacitate != nullptr)
@@ -282,18 +305,22 @@ public:
 			tipRemorca = nullptr;
 		nrRemorci++;
 	}
+
+
+
+	~Remorca() {
+		if (capacitate != nullptr) {
+			delete capacitate;
+			capacitate = nullptr;
+		}
+		if (tipRemorca != nullptr) {
+			delete[] tipRemorca;
+			tipRemorca = nullptr;
+		}
+	}
 };
 int Remorca::nrRemorci = 0;
-Remorca::~Remorca() {
-	if (capacitate != nullptr) {
-		delete capacitate;
-		capacitate = nullptr;
-	}
-	if (tipRemorca != nullptr) {
-		delete[] tipRemorca;
-		tipRemorca = nullptr;
-	}
-}
+
 
 
 
