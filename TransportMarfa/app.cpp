@@ -77,6 +77,28 @@ public:
 	 int getNrRoti() const{
 		 return this->nrRoti;
 	 }
+
+	 //set-eri
+	 void setVitezaMax(int vitezaMax) {
+		 this->vitezaMax = vitezaMax;
+	 }
+
+	 void setConsum(float consum) {   //aici puteam pune si const float* consum
+		 if (this->consum != nullptr) {
+			 delete this->consum;
+			 this->consum = nullptr;
+		 }
+		 this->consum = new float(consum);
+	 }
+
+	 void setMarca(const char* marca) {
+		 if (this->marca != nullptr) {
+			 delete[] this->marca;
+			 this->marca = nullptr;
+		 }
+		 this->marca = new char[strlen(marca) + 1];
+		 strcpy_s(this->marca, strlen(marca) + 1, marca);
+	 }
 	 
 
 };
