@@ -1,3 +1,4 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
 #include <cstring>
 using namespace std;
@@ -348,7 +349,13 @@ int Remorca::nrRemorci = 0;
 
 int main() {
 	
-	
+	Camion c1(90, 45.5f, "Volvo", 8);
+	cout <<"Viteza: "<<c1.getVitezaMax()<<"      consum:"<< c1.getConsum()<<"      marca:"<<c1.getmarca()<<"      nr. Roti:"<<c1.getNrRoti()<<endl;
+	c1.setConsum(40.0f);
+	c1.setVitezaMax(89);
+	c1.setMarca("Volvo mod1");
+	cout << endl << "test:";
+	cout << "Viteza: " << c1.getVitezaMax() << "      consum:" << c1.getConsum() << "      marca:" << c1.getmarca() << "      nr. Roti:" << c1.getNrRoti() << endl;
 
 
 
