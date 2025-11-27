@@ -50,7 +50,7 @@ public:
 		nrCamioane++;
 	}
 
-	 ~Camion();
+	
 	 //facem get-eri
 	 static int getNrCamioane() {
 		 cout << "\nNumar total camioane create pana acum: ";
@@ -80,6 +80,7 @@ public:
 
 	 //set-eri
 	 void setVitezaMax(int vitezaMax) {
+		if(vitezaMax<=90 && vitezaMax>0)
 		 this->vitezaMax = vitezaMax;
 	 }
 
@@ -99,21 +100,23 @@ public:
 		 this->marca = new char[strlen(marca) + 1];
 		 strcpy_s(this->marca, strlen(marca) + 1, marca);
 	 }
+
+	 ~Camion() {
+		 if (consum != nullptr) {
+			 delete consum;
+			 consum = nullptr;
+		 }
+
+		 if (marca != nullptr) {
+			 delete[] marca;
+			 marca = nullptr;
+		 }
+	 }
 	 
 
 };
 int Camion::nrCamioane = 0;
-Camion::~Camion() {
-	if (consum != nullptr) {
-		delete consum;
-		consum = nullptr;
-	}
 
-	if (marca != nullptr) {
-		delete[] marca;
-		marca = nullptr;
-	}
-}
 
 class Sofer {
 private:
@@ -145,11 +148,38 @@ public:
 		nrSoferi++;
 	}
 
+	//get-eri
+	const char* getNume() {
+		if (this->nume != nullptr)
+			return this->nume;
+		else
+			return "Nedeclarat!";
+	}
+
+	 float* getAniExp() {
+		if (this->aniExp != nullptr)
+			return this->aniExp;
+		else
+			return 0;
+	}
+
+	int getVarsta() {
+		if (varsta)
+			return varsta;
+		else
+			return 0;
+	}
+
+	const char* getCatPermis() {
+		return this->catPermis;
+	}
+
 	static int getNrSoferi() {
 		return nrSoferi;
 	}
 
-	~Sofer();
+
+	//set-eri
 
 	Sofer(const Sofer& copie) :catPermis(copie.catPermis) {
 		if (copie.nume != nullptr) {
@@ -165,6 +195,8 @@ public:
 		varsta = copie.varsta;
 		nrSoferi++;
 	}
+
+	~Sofer();
 };
 int Sofer::nrSoferi = 0;
 Sofer::~Sofer() {
