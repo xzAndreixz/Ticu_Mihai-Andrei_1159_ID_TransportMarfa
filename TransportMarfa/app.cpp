@@ -180,6 +180,27 @@ public:
 
 
 	//set-eri
+	void setNume(const char* nume) {
+		if (this->nume != nullptr) {
+			delete[] this->nume;
+			this->nume = nullptr;
+		}
+		this->nume = new char[strlen(nume) + 1];
+		strcpy(this->nume, nume);
+	}
+	void setAniExp(float aniExp) {
+		if (this->aniExp != nullptr) {
+			delete this->aniExp;
+			this->aniExp = nullptr;
+		}
+		if(aniExp>0)
+		this->aniExp = new float(aniExp);
+	}
+
+	void setVarsta(int varsta) {
+		if(varsta>=18)
+		this->varsta = varsta;
+	}
 
 	Sofer(const Sofer& copie) :catPermis(copie.catPermis) {
 		if (copie.nume != nullptr) {
