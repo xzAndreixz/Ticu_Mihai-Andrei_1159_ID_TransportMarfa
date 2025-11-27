@@ -285,11 +285,32 @@ public:
 		else
 			return "Nedeclarat!";
 	}
-
 	static int getNrRemorci() {
 		return nrRemorci;
-}
-	
+	}
+
+	//set-eri
+	void setCapacitate(float capac) {
+		if(capac>0)
+			if (this->capacitate != nullptr) {
+				delete this->capacitate;
+				this->capacitate = nullptr;
+			}
+		this->capacitate = new float(capac);
+
+	}
+	void setFranaPropie(bool x) {
+		this->franaProprie = x;
+	}
+
+	void setTipRemorca(const char* tipRemorca) {
+		if (this->tipRemorca != nullptr) {
+			delete[] this->tipRemorca;
+			this->tipRemorca = nullptr;
+		}
+		this->tipRemorca = new char[strlen(tipRemorca) + 1];
+		strcpy(this->tipRemorca, tipRemorca);
+	}
 
 	Remorca(const Remorca& copie) : nrAxe(copie.nrAxe), capacitate(nullptr), tipRemorca(nullptr) {  //poti pune si ca aceste atribute sa pointeze catre nimic in caz ca da vreo eroare si nu intra pe else pentru a nu fi neintializate
 		if (copie.capacitate != nullptr)
