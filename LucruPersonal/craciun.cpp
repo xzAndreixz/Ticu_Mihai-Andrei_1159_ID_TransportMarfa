@@ -131,7 +131,30 @@ int main() {
 	
 
 	cout << endl << endl;
-	CraciunCraiova craiova(1500, 10, 7, 1);
+	CraciunCraiova craiova(1500, 10, 7, 1);  //pentru clasa CraciunCraiova numele orasului vine predefinit, am testat clasa derivata
+	craiova.afisare();
+	
+
+	cout << endl << endl;
+	//acum testez mostenirea folosind metode din clasa parinte(Craciun)
+	craiova.setBuget(150000);
+	craiova.setNrCadouri(500000);
+	craiova.afisare();
+
+	Craciun* orase[3];
+	orase[0] = &craiova;
+	orase[1] = new Craciun("Bucuresti", 50000, 25000, 1);
+	orase[2] = new Craciun("Curtea de Arges", 2500, 3000, 0);
+	
+	cout << endl << endl << endl;
+	cout << "De aici incepe for-ul:\n";
+
+	for (int i = 0; i < 3; i++) {
+		orase[i]->afisare();
+		if (i > 0) delete orase[i]; //sterg pentru ca de la 1 in sus am alocat cu new :)
+		cout << endl;
+	}
+
 
 
 	return 0;
