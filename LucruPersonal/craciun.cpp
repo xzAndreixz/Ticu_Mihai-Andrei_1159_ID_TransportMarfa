@@ -92,7 +92,7 @@ class CraciunCraiova : public Craciun {
 private:
 	int nrInstalatiiLuminoase;
 	bool mergLaTarg;
-
+public:
 	CraciunCraiova() : Craciun("Craiova", 0, 0, 0), nrInstalatiiLuminoase(0), mergLaTarg(0){}
 	CraciunCraiova(double buget, int nrCadouri, int nrInstalatiiLuminoase, bool mergLaTarg) : Craciun("Craiova", buget, nrCadouri, 1) {
 		this->nrInstalatiiLuminoase = nrInstalatiiLuminoase;
@@ -129,6 +129,10 @@ int main() {
 	Craciun c2("Bucuresti", 2000, 12, 1);
 	c2.afisare();
 	
+
+	cout << endl << endl;
+	CraciunCraiova craiova(1500, 10, 7, 1);
+
 
 	return 0;
 }
