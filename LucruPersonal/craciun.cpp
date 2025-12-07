@@ -88,9 +88,47 @@ public:
 
 };
 
+class CraciunCraiova : public Craciun {
+private:
+	int nrInstalatiiLuminoase;
+	bool mergLaTarg;
+
+	CraciunCraiova() : Craciun("Craiova", 0, 0, 0), nrInstalatiiLuminoase(0), mergLaTarg(0){}
+	CraciunCraiova(double buget, int nrCadouri, int nrInstalatiiLuminoase, bool mergLaTarg) : Craciun("Craiova", buget, nrCadouri, 1) {
+		this->nrInstalatiiLuminoase = nrInstalatiiLuminoase;
+		this->mergLaTarg = mergLaTarg;
+	}
+
+	int getNrInstalatiiLuminoase() {
+		return this->nrInstalatiiLuminoase;
+	}
+
+	bool getMergLaTarg() {
+		return this->mergLaTarg;
+	}
+
+	void afisare() {
+		Craciun::afisare();
+		if (this->mergLaTarg) {
+			cout << "\nNr. de instalatii de Craciun: " << this->nrInstalatiiLuminoase;
+		}
+		else {
+			cout << "\nNu merg la targ";
+		}
+	}
+
+
+};
+
 
 int main() {
 
+	Craciun c1;
+	c1.afisare();
+	cout << endl;
+	Craciun c2("Bucuresti", 2000, 12, 1);
+	c2.afisare();
+	
 
 	return 0;
 }
