@@ -75,7 +75,16 @@ public:
 		this->areTarg = x;
 	}
 
-
+	void afisare() {
+		if (this->areTarg) {
+			cout << "\nOras: " << this->oras;
+			cout << "\nBuget: " << this->buget;
+			cout << "\nNr. cadouri: " << this->nrCadouri;
+		}
+		else {
+			cout << "\nOrasul nu are targ de Craciun";
+		}
+	}
 
 };
 
