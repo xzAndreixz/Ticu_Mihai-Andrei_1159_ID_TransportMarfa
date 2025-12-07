@@ -75,7 +75,7 @@ public:
 		this->areTarg = x;
 	}
 
-	void afisare() {
+	virtual void afisare() {
 		if (this->areTarg) {
 			cout << "\nOras: " << this->oras;
 			cout << "\nBuget: " << this->buget;
