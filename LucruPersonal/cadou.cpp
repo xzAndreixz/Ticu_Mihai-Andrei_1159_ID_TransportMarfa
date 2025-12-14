@@ -10,13 +10,13 @@ private:
 	float pret;
 	float greutate;
 public:
-	string getDenumire() {
+	string getDenumire() const{
 		return this->denumire;
 	}
-	float getPret() {
+	float getPret() const{
 		return this->pret;
 	}
-	float getGreutate() {
+	float getGreutate() const{
 		return this->greutate;
 	}
 
@@ -52,26 +52,59 @@ public:
 		this->greutate = greutate;
 	}
 
-	friend ostream& operator<<(ostream& out, const cadou& c) {
-		if (c.pret > 0) {
-			out << "Cadou: " << c.denumire << endl;
-			out << "Pret minim: " << c.pret << " lei" << endl;
-			out << "Greutate: " << c.greutate << " kg" << endl;
+
+	virtual void afisare() const {
+		if (pret > 0) {
+			cout << "Cadou: " << denumire << endl;
+			cout << "Pret minim: " << pret << " lei" << endl;
+			cout << "Greutate: " << greutate << " kg" << endl;
 		}
 		else {
-			out << "Cadoul nu este initializat!";
+			cout << "Cadoul nu este initializat!" << endl;
 		}
-		return out;
-
 	}
+
+
 };
+
+class Romania : public cadou {
+private:
+	double taxa;
+
+public:
+	Romania(string denumire, float pret, float greutate)
+		: cadou(denumire, pret, greutate), taxa(15.0) {
+	}
+
+	float calculeazaPretFinal() const {
+		float p = getPret();
+		return p + p * taxa / 100;
+	}
+
+
+	void afisare() const override {
+		cadou::afisare();
+		cout << "Tara: Romania" << endl;
+		cout << "Taxa introducere: " << taxa << "%" << endl;
+		cout << "Pret final: " << calculeazaPretFinal() << " lei" << endl;
+	}
+
+
+
+};
+
+
 
 
 int main() {
 
-	cadou c1;
-	cadou c2("Omnitrix", 149.5, 0.2);
-	cout << c1 << endl << c2;
+	cadou c("Omnitirx", 100, 0.2);
+	Romania r("Omnitrix RO", 100, 0.2);
+
+	c.afisare();
+	cout << endl;
+	r.afisare();
+	
 
 	return 0;
 }
