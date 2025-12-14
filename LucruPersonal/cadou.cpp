@@ -93,6 +93,31 @@ public:
 
 };
 
+class USA : public cadou {
+private:
+	double taxa;
+
+public:
+	USA(string denumire, float pret, float greutate)
+		: cadou(denumire, pret, greutate), taxa(45.0) {
+	}
+
+	float calculeazaPretFinal() const {
+		float p = getPret();
+		return p + p * taxa / 100;
+	}
+
+
+	void afisare() const override {
+		cadou::afisare();
+		cout << "Tara: USA" << endl;
+		cout << "Taxa introducere: " << taxa << "%" << endl;
+		cout << "Pret final: " << calculeazaPretFinal() << " lei" << endl;
+	}
+
+
+
+};
 
 
 
@@ -100,11 +125,13 @@ int main() {
 
 	cadou c("Omnitirx", 100, 0.2);
 	Romania r("Omnitrix RO", 100, 0.2);
+	USA u("Omnitrix USA", 100, 0.2);
 
 	c.afisare();
 	cout << endl;
 	r.afisare();
-	
+	cout << endl;
+	u.afisare();
 
 	return 0;
 }
