@@ -52,7 +52,18 @@ public:
 		this->greutate = greutate;
 	}
 
+	friend ostream& operator<<(ostream& out, const cadou& c) {
+		if (c.pret > 0) {
+			out << "Cadou: " << c.denumire << endl;
+			out << "Pret minim: " << c.pret << " lei" << endl;
+			out << "Greutate: " << c.greutate << " kg" << endl;
+		}
+		else {
+			out << "Cadoul nu este initializat!";
+		}
+		return out;
 
+	}
 };
 
 
@@ -60,7 +71,7 @@ int main() {
 
 	cadou c1;
 	cadou c2("Omnitrix", 149.5, 0.2);
-
+	cout << c1 << endl << c2;
 
 	return 0;
 }
